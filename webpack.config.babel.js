@@ -1,5 +1,5 @@
-import webpack from "webpack";
-import webpackRxjsExternals from "webpack-rxjs-externals";
+import webpack from 'webpack';
+import webpackRxjsExternals from 'webpack-rxjs-externals';
 
 const env = process.env.NODE_ENV;
 
@@ -11,33 +11,33 @@ const config = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: [["env", { modules: false }]]
+            presets: [['env', { modules: false }]]
           }
         }
       }
     ]
   },
   output: {
-    library: "ReduxObservable",
-    libraryTarget: "umd"
+    library: 'ReduxObservable',
+    libraryTarget: 'umd'
   },
   externals: [
     webpackRxjsExternals(),
     {
       redux: {
-        root: "Redux",
-        commonjs2: "redux",
-        commonjs: "redux",
-        amd: "redux"
+        root: 'Redux',
+        commonjs2: 'redux',
+        commonjs: 'redux',
+        amd: 'redux'
       }
     }
   ],
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(env)
+      'process.env.NODE_ENV': JSON.stringify(env)
     })
   ]
 };
